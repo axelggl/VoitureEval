@@ -1,3 +1,5 @@
+package Pneus;
+
 public class Pneu {
     protected String marque;
     protected int largeurPneu;
