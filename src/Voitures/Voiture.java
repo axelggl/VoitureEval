@@ -65,17 +65,17 @@ public class Voiture {
 
     // La méthode addPneu va ajouter des pneus à une voiture, elle vérifie aussi que le nombre de pneus est correct,
     // ainsi que si la voiture peut être équipée d'un certain type de pneus.
-    public void addPneu(Pneu pneu, Voiture voiture) throws Exception {
+    public void addPneu(Pneu pneu) throws Exception {
         if (pneus.size() > 4) {
             throw new Exception("La voiture doit avoir 4 pneus, pas plus !");
         }
         if (pneus.size() < 4) {
             throw new Exception("La voiture doit avoir 4 pneus, pas moins !");
         }
-        if (pneu instanceof PneuHiver && voiture instanceof VoitureElectrique) {
+        if (pneu instanceof PneuHiver && this instanceof VoitureElectrique) {
             throw new Exception("Une voiture électrique ne peut pas posséder de pneus Hiver !");
         }
-        if (!(pneu instanceof PneusTouteSaison) && voiture instanceof VoitureHybride) {
+        if (!(pneu instanceof PneusTouteSaison) && this instanceof VoitureHybride) {
             throw new Exception("Une voiture hybride ne peut posséder que des pneus Toute Saison !");
         }
         pneus.add(pneu);
