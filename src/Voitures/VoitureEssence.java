@@ -2,7 +2,9 @@ package Voitures;
 
 public class VoitureEssence extends Voiture {
 
-    public VoitureEssence(String marque, int kilometrage, String modele, int autonomieMax, int chevauxFiscaux) {
+    private static int autonomieMax = 1000;
+
+    public VoitureEssence(String marque, int kilometrage, String modele, int chevauxFiscaux) {
         super(marque, kilometrage, modele, autonomieMax, chevauxFiscaux);
     }
 }
