@@ -18,4 +18,7 @@ public class Voiture {
         this.autonomieMax = autonomieMax;
         this.chevauxFiscaux = chevauxFiscaux;
     }
+
+
+
 }
