@@ -7,4 +7,7 @@ public class VoitureElectrique extends Voiture {
     public VoitureElectrique(String marque, int kilometrage, String modele, int chevauxFiscaux) {
         super(marque, kilometrage, modele, autonomieMax, chevauxFiscaux);
     }
+
+
+
 }
