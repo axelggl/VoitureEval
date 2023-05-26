@@ -8,7 +8,7 @@ public class Voiture {
     protected int kilometrage;
     protected String modele;
     protected int autonomieMax;
-    List<Voiture> voiture = new ArrayList<>();
+    List<Voiture> pneus = new ArrayList<>();
     protected int chevauxFiscaux;
 
     public Voiture(String marque, int kilometrage, String modele, int autonomieMax, int chevauxFiscaux) {
