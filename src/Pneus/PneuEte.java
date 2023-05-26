@@ -1,6 +1,6 @@
 package Pneus;
 
-public class PneuEte extends Pneu{
+public class PneuEte extends Pneu {
 
     public PneuEte(String marque, int largeurPneu, int indiceCapaciteCharge, String dateProduction, int indiceAdherence) {
         super(marque, largeurPneu, indiceCapaciteCharge, dateProduction, indiceAdherence);
