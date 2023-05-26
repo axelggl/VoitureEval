@@ -2,7 +2,7 @@ package Pneus;
 
 public class PneusTouteSaison extends Pneu {
 
-    public PneusTouteSaison(String marque, int largeurPneu, int indiceCapaciteCharge, String dateProduction, int indiceAdherence) {
+    public PneusTouteSaison(String marque, int largeurPneu, int indiceCapaciteCharge, int dateProduction, double indiceAdherence) {
         super(marque, largeurPneu, indiceCapaciteCharge, dateProduction, indiceAdherence);
     }
 

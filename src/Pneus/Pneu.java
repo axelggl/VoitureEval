@@ -4,10 +4,10 @@ public class Pneu {
     protected String marque;
     protected int largeurPneu;
     protected int indiceCapaciteCharge;
-    protected String dateProduction;
-    protected int indiceAdherence;
+    protected int dateProduction;
+    protected double indiceAdherence;
 
-    public Pneu(String marque, int largeurPneu, int indiceCapaciteCharge, String dateProduction, int indiceAdherence) {
+    public Pneu(String marque, int largeurPneu, int indiceCapaciteCharge, int dateProduction, double indiceAdherence) {
         this.marque = marque;
         this.largeurPneu = largeurPneu;
         this.indiceCapaciteCharge = indiceCapaciteCharge;
