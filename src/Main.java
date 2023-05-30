@@ -1,10 +1,9 @@
-import Pneus.Pneu;
 import Pneus.PneuEte;
 import Pneus.PneuHiver;
 import Pneus.PneusTouteSaison;
-import Voitures.Voiture;
 import Voitures.VoitureDiesel;
 import Voitures.VoitureElectrique;
+import Voitures.VoitureEssence;
 import Voitures.VoitureHybride;
 
 public class Main {
@@ -19,11 +18,13 @@ public class Main {
             voitureElectrique.addPneu(pneuHiver1); // Exception car un véhicule électrique ne peut avoir de pneu hiver.
 
             voitureElectrique.has4Wheels();
+            voitureElectrique.maxKilometrage();
+            voitureElectrique.validKilometrage();
         } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage() + "\n");
         }
 
-        VoitureHybride voitureHybride = new VoitureHybride("Toyota", 2000, "CH-R", 4);
+        VoitureHybride voitureHybride = new VoitureHybride("Toyota", 2000000, "CH-R", 4); // kilométrage trop élevé --> erreur
         PneusTouteSaison pneuTouteSaison1 = new PneusTouteSaison("Michelin", 200, 80, 2022, 0.3);
         try {
             voitureHybride.addPneu(pneuTouteSaison1);
@@ -32,11 +33,13 @@ public class Main {
             voitureHybride.addPneu(pneuTouteSaison1);
 
             voitureHybride.has4Wheels();
+            voitureHybride.maxKilometrage();
+            voitureHybride.validKilometrage();
         } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage() + "\n");
         }
 
-        VoitureDiesel voitureDiesel = new VoitureDiesel("Nissan", 1500000, "Juke", 4);
+        VoitureDiesel voitureDiesel = new VoitureDiesel("Nissan", -100, "Juke", 4); // kilométrage négatif --> erreur
         PneuEte pneuEte2 = new PneuEte("Michelin", 200, 80,2018, 0.6);
         try {
             voitureDiesel.addPneu(pneuEte2);
@@ -46,6 +49,21 @@ public class Main {
 
             voitureDiesel.has4Wheels();
             voitureDiesel.maxKilometrage();
+            voitureDiesel.validKilometrage();
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e.getMessage() + "\n");
+        }
+
+        VoitureEssence voitureEssence = new VoitureEssence("Ford", 2000, "C-MAX", 6);
+        PneuHiver pneuHiver2 = new PneuHiver("Michelin", 250, 90, 2023, 0.8);
+        try {
+            voitureEssence.addPneu(pneuHiver2);
+            voitureEssence.addPneu(pneuHiver2);
+            voitureEssence.addPneu(pneuHiver2);
+
+            voitureEssence.has4Wheels();
+            voitureEssence.maxKilometrage();
+            voitureEssence.validKilometrage();
         } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage() + "\n");
         }
@@ -64,5 +82,10 @@ public class Main {
         System.out.println("Kilométrage : "+ voitureDiesel.getKilometrage());
         System.out.println("Modèle : "+ voitureDiesel.getModele());
         System.out.println("Chevaux Fiscaux : "+ voitureDiesel.getChevauxFiscaux());
+        System.out.println("\n");
+        System.out.println("Marque : "+ voitureEssence.getMarque());
+        System.out.println("Kilométrage : "+ voitureEssence.getKilometrage());
+        System.out.println("Modèle : "+ voitureEssence.getModele());
+        System.out.println("Chevaux Fiscaux : "+ voitureEssence.getChevauxFiscaux());
     }
 }
