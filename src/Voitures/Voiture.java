@@ -88,5 +88,4 @@ public class Voiture {
             throw new IllegalArgumentException("La voiture doit avoir 4 pneus !");
         }
     }
-
 }
