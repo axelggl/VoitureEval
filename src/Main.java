@@ -8,6 +8,7 @@ import Voitures.VoitureHybride;
 
 public class Main {
     public static void main(String[] args) {
+        // Instanciation de tous les véhicules et des roues, puis try-catch pour récupérer d'éventuelles erreurs, affichage des caractéristiques des véhicules.
         VoitureElectrique voitureElectrique = new VoitureElectrique("Tesla", 20000, "Model S", 5);
         PneuEte pneuEte1 = new PneuEte("Michelin", 220, 90, 2022, 0.6);
         PneuHiver pneuHiver1 = new PneuHiver("Michelin", 220, 90, 2022, 0.8);
@@ -17,9 +18,9 @@ public class Main {
             voitureElectrique.addPneu(pneuEte1);
             voitureElectrique.addPneu(pneuHiver1); // Exception car un véhicule électrique ne peut avoir de pneu hiver.
 
-            voitureElectrique.has4Wheels();
-            voitureElectrique.maxKilometrage();
-            voitureElectrique.validKilometrage();
+            voitureElectrique.has4Wheels(); // vérifie que le véhicule possède bien 4 roues
+            voitureElectrique.maxKilometrage(); // vérifie le kilométrage max
+            voitureElectrique.validKilometrage(); // vérifie la validité du kilométrage
         } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage() + "\n");
         }
@@ -59,7 +60,7 @@ public class Main {
         try {
             voitureEssence.addPneu(pneuHiver2);
             voitureEssence.addPneu(pneuHiver2);
-            voitureEssence.addPneu(pneuHiver2);
+            voitureEssence.addPneu(pneuHiver2); // Exception --> un véhicule doit avoir 4 roues
 
             voitureEssence.has4Wheels();
             voitureEssence.maxKilometrage();
@@ -67,7 +68,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage() + "\n");
         }
-
+        // Affichage des différentes caractéristiques des différents véhicules
         System.out.println("Marque : "+ voitureElectrique.getMarque());
         System.out.println("Kilométrage : "+ voitureElectrique.getKilometrage());
         System.out.println("Modèle : "+ voitureElectrique.getModele());
