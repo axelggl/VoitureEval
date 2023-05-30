@@ -1,8 +1,6 @@
 package Voitures;
 
 import Pneus.Pneu;
-import Pneus.PneuHiver;
-import Pneus.PneusTouteSaison;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,7 @@ public class Voiture {
     private int kilometrage;
     private String modele;
     private int autonomieMax;
-    List<Pneu> pneus = new ArrayList<>();
+    private List<Pneu> pneus;
     private int chevauxFiscaux;
 
     public Voiture(String marque, int kilometrage, String modele, int autonomieMax, int chevauxFiscaux) {
@@ -20,9 +18,11 @@ public class Voiture {
         this.kilometrage = kilometrage;
         this.modele = modele;
         this.autonomieMax = autonomieMax;
+        this.pneus = new ArrayList<>();
         this.chevauxFiscaux = chevauxFiscaux;
     }
 
+    // Les différents Getters et Setters
     public String getMarque() {
         return marque;
     }
@@ -63,22 +63,30 @@ public class Voiture {
         this.chevauxFiscaux = chevauxFiscaux;
     }
 
-    // La méthode addPneu va ajouter des pneus à une voiture, elle vérifie aussi que le nombre de pneus est correct,
-    // ainsi que si la voiture peut être équipée d'un certain type de pneus.
+
     public void addPneu(Pneu pneu) throws Exception {
-        if (pneus.size() > 4) {
-            throw new Exception("La voiture doit avoir 4 pneus, pas plus !");
-        }
-        if (pneus.size() < 4) {
-            throw new Exception("La voiture doit avoir 4 pneus, pas moins !");
-        }
-        if (pneu instanceof PneuHiver && this instanceof VoitureElectrique) {
-            throw new Exception("Une voiture électrique ne peut pas posséder de pneus Hiver !");
-        }
-        if (!(pneu instanceof PneusTouteSaison) && this instanceof VoitureHybride) {
-            throw new Exception("Une voiture hybride ne peut posséder que des pneus Toute Saison !");
-        }
         pneus.add(pneu);
+    }
+
+    // Nouvelle contrainte, si le kilométrage est trop élevé, renvoie une erreur.
+    public void maxKilometrage() throws Exception {
+        if (kilometrage > 1000000) {
+            throw new Exception("La voiture ne peut plus être utilisée, elle a un kilométrage trop élevé !");
+        }
+    }
+
+    // Nouvelle contrainte, le kilométrage ne peut pas être négatif.
+    public void validKilometrage() throws Exception {
+        if (kilometrage < 0) {
+            throw new Exception("La voiture possède un kilométrage négatif, la boite a été trafiquée, j'achète pas perso");
+        }
+    }
+
+    // Permet de vérifier qu'un véhicule possède bien 4 roues, renvoie une erreur si ce n'est pas le cas.
+    public void has4Wheels() {
+        if (pneus.size() != 4) {
+            throw new IllegalArgumentException("La voiture doit avoir 4 pneus !");
+        }
     }
 
 }

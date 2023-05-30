@@ -1,46 +1,68 @@
 import Pneus.Pneu;
 import Pneus.PneuEte;
+import Pneus.PneuHiver;
 import Pneus.PneusTouteSaison;
 import Voitures.Voiture;
+import Voitures.VoitureDiesel;
 import Voitures.VoitureElectrique;
 import Voitures.VoitureHybride;
 
 public class Main {
     public static void main(String[] args) {
+        VoitureElectrique voitureElectrique = new VoitureElectrique("Tesla", 20000, "Model S", 5);
+        PneuEte pneuEte1 = new PneuEte("Michelin", 220, 90, 2022, 0.6);
+        PneuHiver pneuHiver1 = new PneuHiver("Michelin", 220, 90, 2022, 0.8);
         try {
-            VoitureElectrique voitureElectrique = new VoitureElectrique("Tesla", 20000, "Model S", 5);
-            PneuEte pneuEte1 = new PneuEte("Michelin", 220, 90, 2022, 0.6);
-            PneuEte pneuEte2 = new PneuEte("Michelin", 220, 90, 2022, 0.6);
-            PneuEte pneuEte3 = new PneuEte("Michelin", 220, 90, 2022, 0.6);
-            PneuEte pneuEte4 = new PneuEte("Michelin", 220, 90, 2022, 0.6);
             voitureElectrique.addPneu(pneuEte1);
-            voitureElectrique.addPneu(pneuEte2);
-            voitureElectrique.addPneu(pneuEte3);
-            voitureElectrique.addPneu(pneuEte4);
+            voitureElectrique.addPneu(pneuEte1);
+            voitureElectrique.addPneu(pneuEte1);
+            voitureElectrique.addPneu(pneuHiver1); // Exception car un véhicule électrique ne peut avoir de pneu hiver.
 
-            VoitureHybride voitureHybride = new VoitureHybride("Toyota", 2000, "CH-R", 4);
-            PneusTouteSaison pneusTouteSaison1 = new PneusTouteSaison("Michelin", 200, 80, 2022, 0.3);
-            PneusTouteSaison pneusTouteSaison2 = new PneusTouteSaison("Michelin", 200, 80, 2022, 0.3);
-            PneusTouteSaison pneusTouteSaison3 = new PneusTouteSaison("Michelin", 200, 80, 2022, 0.3);
-            PneusTouteSaison pneusTouteSaison4 = new PneusTouteSaison("Michelin", 200, 80, 2022, 0.3);
-            voitureHybride.addPneu(pneusTouteSaison1);
-            voitureHybride.addPneu(pneusTouteSaison2);
-            voitureHybride.addPneu(pneusTouteSaison3);
-            voitureHybride.addPneu(pneusTouteSaison4);
+            voitureElectrique.has4Wheels();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur : " + e.getMessage() + "\n");
         }
-    }
 
-    public String afficherInfos(Voiture voiture) {
-        System.out.println("Marque : " + voiture.getMarque());
-        System.out.println("Kilométrage : " + voiture.getKilometrage());
-        System.out.println("Modèle : " + voiture.getModele());
-        System.out.println("Chevaux Fiscaux : " + voiture.getChevauxFiscaux());
-        System.out.println("Pneus : ");
-        for (Pneu pneu : voiture.)
+        VoitureHybride voitureHybride = new VoitureHybride("Toyota", 2000, "CH-R", 4);
+        PneusTouteSaison pneuTouteSaison1 = new PneusTouteSaison("Michelin", 200, 80, 2022, 0.3);
+        try {
+            voitureHybride.addPneu(pneuTouteSaison1);
+            voitureHybride.addPneu(pneuTouteSaison1);
+            voitureHybride.addPneu(pneuTouteSaison1);
+            voitureHybride.addPneu(pneuTouteSaison1);
 
+            voitureHybride.has4Wheels();
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e.getMessage() + "\n");
         }
-    }
 
+        VoitureDiesel voitureDiesel = new VoitureDiesel("Nissan", 1500000, "Juke", 4);
+        PneuEte pneuEte2 = new PneuEte("Michelin", 200, 80,2018, 0.6);
+        try {
+            voitureDiesel.addPneu(pneuEte2);
+            voitureDiesel.addPneu(pneuEte2);
+            voitureDiesel.addPneu(pneuEte2);
+            voitureDiesel.addPneu(pneuEte2);
+
+            voitureDiesel.has4Wheels();
+            voitureDiesel.maxKilometrage();
+        } catch (Exception e) {
+            System.out.println("Erreur : " + e.getMessage() + "\n");
+        }
+
+        System.out.println("Marque : "+ voitureElectrique.getMarque());
+        System.out.println("Kilométrage : "+ voitureElectrique.getKilometrage());
+        System.out.println("Modèle : "+ voitureElectrique.getModele());
+        System.out.println("Chevaux Fiscaux : "+ voitureElectrique.getChevauxFiscaux());
+        System.out.println("\n");
+        System.out.println("Marque : "+ voitureHybride.getMarque());
+        System.out.println("Kilométrage : "+ voitureHybride.getKilometrage());
+        System.out.println("Modèle : "+ voitureHybride.getModele());
+        System.out.println("Chevaux Fiscaux : "+ voitureHybride.getChevauxFiscaux());
+        System.out.println("\n");
+        System.out.println("Marque : "+ voitureDiesel.getMarque());
+        System.out.println("Kilométrage : "+ voitureDiesel.getKilometrage());
+        System.out.println("Modèle : "+ voitureDiesel.getModele());
+        System.out.println("Chevaux Fiscaux : "+ voitureDiesel.getChevauxFiscaux());
+    }
 }
